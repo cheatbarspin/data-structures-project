@@ -1,3 +1,6 @@
+from typing import Any
+
+
 class Node:
     """Класс для узла стека"""
 
@@ -7,7 +10,8 @@ class Node:
 
         :param data: данные, которые будут храниться в узле
         """
-        pass
+        self.data: Any = data
+        self.next_node: Node | None = next_node
 
 
 class Stack:
@@ -15,7 +19,7 @@ class Stack:
 
     def __init__(self):
         """Конструктор класса Stack"""
-        pass
+        self.top: Node | None = None
 
     def push(self, data):
         """
@@ -23,7 +27,7 @@ class Stack:
 
         :param data: данные, которые будут добавлены на вершину стека
         """
-        pass
+        self.top = Node(data, self.top)
 
     def pop(self):
         """
@@ -31,4 +35,16 @@ class Stack:
 
         :return: данные удаленного элемента
         """
-        pass
+        prev_top = self.top
+        self.top = self.top.next_node
+        return prev_top
+
+
+# stack = Stack()
+# print(stack.top)
+#
+# stack.push('data1')
+# print(stack.top.data)
+#
+# stack.push('data1')
+# print(stack.top.data.next_node.data)
