@@ -1,17 +1,14 @@
-from typing import Any
-
-
 class Node:
     """Класс для узла стека"""
 
-    def __init__(self, data, next_node):
+    def __init__(self, data, next_node=None):
         """
         Конструктор класса Node
 
         :param data: данные, которые будут храниться в узле
         """
-        self.data: Any = data
-        self.next_node: Node | None = next_node
+        self.data = data
+        self.next_node = next_node
 
 
 class Stack:
@@ -19,7 +16,7 @@ class Stack:
 
     def __init__(self):
         """Конструктор класса Stack"""
-        self.top: Node | None = None
+        self.top = None
 
     def push(self, data):
         """
@@ -27,7 +24,10 @@ class Stack:
 
         :param data: данные, которые будут добавлены на вершину стека
         """
-        self.top = Node(data, self.top)
+        node = Node(data)
+        if self.top is not None:
+            node.next_node = self.top
+        self.top = node
 
     def pop(self):
         """
@@ -35,16 +35,25 @@ class Stack:
 
         :return: данные удаленного элемента
         """
-        prev_top = self.top
-        self.top = self.top.next_node
-        return prev_top
+        last_tarelka = self.top
+        self.top = last_tarelka.next_node
+        return last_tarelka.data
 
+    def __str__(self):
+        res = ''
+        cur = self.top
+        while cur:
+            res += cur.data
+            res += '-->'
+            cur = cur.next_node
+        res += 'None'
+        return res
 
-# stack = Stack()
-# print(stack.top)
-#
-# stack.push('data1')
-# print(stack.top.data)
-#
-# stack.push('data1')
-# print(stack.top.data.next_node.data)
+# stack_of_plates = Stack()
+# stack_of_plates.push('plate1')
+# stack_of_plates.push('plate2')
+# stack_of_plates.push('plate3')
+# print(stack_of_plates.top.data)
+# print(stack_of_plates)
+# stack_of_plates.pop()
+# print(stack_of_plates.top.data)

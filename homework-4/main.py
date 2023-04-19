@@ -1,4 +1,4 @@
-from src.queue import Queue
+from src.queuee import Queue
 
 if __name__ == '__main__':
     # Создаем пустую очередь
