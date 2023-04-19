@@ -35,9 +35,9 @@ class Stack:
 
         :return: данные удаленного элемента
         """
-        last_tarelka = self.top
-        self.top = last_tarelka.next_node
-        return last_tarelka.data
+        last_plate = self.top
+        self.top = last_plate.next_node
+        return last_plate.data
 
     def __str__(self):
         res = ''
@@ -55,5 +55,7 @@ class Stack:
 # stack_of_plates.push('plate3')
 # print(stack_of_plates.top.data)
 # print(stack_of_plates)
+# stack_of_plates.pop()
+# stack_of_plates.pop()
 # stack_of_plates.pop()
 # print(stack_of_plates.top.data)

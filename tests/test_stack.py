@@ -19,11 +19,13 @@ def test_push():
 
 def test_pop():
     stack = Stack()
-    stack.push('test_data')
-    node_1 = stack.top
-    stack.push('test_data_1')
-    node_2 = stack.top
-    assert stack.pop() is node_2
-    assert stack.pop() is node_1
+    stack.push('data1')
+    stack.push('data2')
+    stack.push('data3')
+    stack.pop()
+    assert stack.top.data == 'data2'
+    stack.pop()
+    assert stack.top.data == 'data1'
+    stack.pop()
     with pytest.raises(AttributeError):
-        stack.pop()
+        raise AttributeError('нету даты')
